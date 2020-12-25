@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JULIA_JSON=$(curl -fs https://julialang-s3.julialang.org/bin/versions.json)
+JULIA_JSON=$(curl -fsSL https://julialang-s3.julialang.org/bin/versions.json)
 JULIA_VERSION=$(
     echo "$JULIA_JSON" |
     jq -r 'keys | .[]' |
