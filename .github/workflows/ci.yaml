@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  schedule:
+  - cron: '0 0 * * 0'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04, ubuntu-18.04]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Setup
+      run: ./julia
+    
